@@ -1,4 +1,4 @@
-# Book Catalogue App 📚
+# Book Catalogue App - IS211 Final Project
 
 Hi! I'm **Shreejana Ghalan Lama**, and this is my final project for **IS211**, taught by **Professor Alain Ledon** at Baruch College.
 
