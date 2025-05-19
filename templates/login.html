@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title> <!-- Page title shown on the browser tab -->
+</head>
+<body>
+
+    <!-- Heading for the login page -->
+    <h2>Login</h2>
+
+    <!-- Form that sends a POST request to the current route ('/') -->
+    <form method="POST">
+        <!-- This hidden tag is used by Flask-WTF for CSRF protection -->
+        {{ form.hidden_tag() }}
+
+        <!-- Username field with its label -->
+        {{ form.username.label }} {{ form.username() }}<br><br>
+
+        <!-- Password field with its label -->
+        {{ form.password.label }} {{ form.password() }}<br><br>
+
+        <!-- Submit button -->
+        {{ form.submit() }}
+    </form>
+
+</body>
+</html>

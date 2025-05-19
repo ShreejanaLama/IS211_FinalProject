@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+
+    <!-- Page heading -->
+    <h2>Welcome to Your Book Catalogue!</h2>
+
+    <!-- Section to search for a book using its ISBN -->
+    <h3>Search for a Book by ISBN</h3>
+    <form method="POST" action="{{ url_for('search_book') }}">
+        <!-- Input field for the ISBN number -->
+        <input type="text" name="isbn" placeholder="Enter ISBN" required>
+        <!-- Submit button to trigger the search -->
+        <input type="submit" value="Search & Save">
+    </form>
+
+    <!-- Section to display the list of saved books -->
+    <h3>Your Books</h3>
+    <ul>
+        <!-- Loop through the books passed in from the backend -->
+        {% for book in books %}
+        <li>
+            <!-- Display book title, author, page count, and rating -->
+            <strong>{{ book.title }}</strong> by {{ book.author }} |
+            Pages: {{ book.page_count }} | Rating: {{ book.average_rating }}
+
+            <!-- If the book has a thumbnail, show the image -->
+            {% if book.thumbnail %}
+            <br><img src="{{ book.thumbnail }}" width="100">
+            {% endif %}
+
+            <!-- Delete button to remove the book from the database -->
+            <form method="POST" action="{{ url_for('delete_book', book_id=book.id) }}">
+                <button type="submit">Delete</button>
+            </form>
+            <hr>
+        </li>
+
+        <!-- If there are no books yet, show a default message -->
+        {% else %}
+        <p>No books added yet.</p>
+        {% endfor %}
+    </ul>
+
+    <!-- Logout link to end the session -->
+    <a href="{{ url_for('logout') }}">Logout</a>
+
+</body>
+</html>
